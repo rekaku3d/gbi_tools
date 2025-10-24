@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Solar Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body class="bg-gray-100">
+
+    <div id="scene-container"></div>
+
+    <!-- Control panel for Solar Calculator -->
+    <div id="controls">
+        <h3 class="text-xl font-semibold text-gray-800 text-center">Solar Calculator</h3>
+
+        <!-- Asset Inputs -->
+        <div class="flex flex-col gap-3">
+            <div>
+                <label for="solar-input" class="block text-sm font-medium text-gray-700 mb-1">Number of Solar Panels 400 Watts</label>
+                <input type="number" id="solar-input" value="4" min="0" max="20" class="w-full">
+            </div>
+            <div>
+                <label for="battery-input" class="block text-sm font-medium text-gray-700 mb-1">Number of Batteries (1kWh ea)</label>
+                <input type="number" id="battery-input" value="3" min="0" max="20" class="w-full">
+            </div>
+        </div>
+
+        <!-- Loads Checkboxes -->
+        <div>
+            <h4 class="text-sm font-medium text-gray-700 mb-2">Daily Appliance Usage</h4>
+            <div class="flex flex-col gap-2">
+                <div class="control-item">
+                    <input type="checkbox" id="check-fan" class="accent-blue-500">
+                    <label for="check-fan" class="text-gray-700 select-none cursor-pointer flex-grow">Fan (0.1 kW)</label>
+                    <input type="number" id="hours-fan" value="8" min="0" max="24" class="w-16 text-center"><span class="text-xs text-gray-500">hrs</span>
+                </div>
+                <div class="control-item">
+                    <input type="checkbox" id="check-tv" class="accent-green-500">
+                    <label for="check-tv" class="text-gray-700 select-none cursor-pointer flex-grow">TV (0.2 kW)</label>
+                    <input type="number" id="hours-tv" value="4" min="0" max="24" class="w-16 text-center"><span class="text-xs text-gray-500">hrs</span>
+                </div>
+                <div class="control-item">
+                    <input type="checkbox" id="check-ac" class="accent-red-500">
+                    <label for="check-ac" class="text-gray-700 select-none cursor-pointer flex-grow">AC (1.5 kW)</label>
+                    <input type="number" id="hours-ac" value="6" min="0" max="24" class="w-16 text-center"><span class="text-xs text-gray-500">hrs</span>
+                </div>
+                <div class="control-item">
+                    <input type="checkbox" id="check-water-heater" class="accent-yellow-500">
+                    <label for="check-water-heater" class="text-gray-700 select-none cursor-pointer flex-grow">Water Heater (4.5 kW)</label>
+                    <input type="number" id="hours-water-heater" value="1" min="0" max="24" class="w-16 text-center"><span class="text-xs text-gray-500">hrs</span>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="my-1 border-gray-300">
+
+        <!-- Calculation Result -->
+        <div id="result-area">
+            <label class="block text-sm font-medium text-gray-700 mb-1 text-center">System Performance</label>
+            <div id="star-rating-display">⭐⭐⭐</div>
+            <div id="result-display">Select loads...</div>
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module" src="script/main.js"></script>
+</body>
+</html>
